@@ -1,3 +1,16 @@
+<!-- MDTOC maxdepth:6 firsth1:1 numbering:0 flatten:0 bullets:1 updateOnSave:1 -->
+
+- [unit](#unit)   
+   - [单元的概念(12个类型)](#单元的概念12个类型)   
+   - [罗列所有或特定状态unit](#罗列所有或特定状态unit)   
+   - [单一unit状态查看](#单一unit状态查看)   
+   - [单一unit管理控制](#单一unit管理控制)   
+   - [罗列单个unit的依赖](#罗列单个unit的依赖)   
+   - [unit配置文件](#unit配置文件)   
+   - [unit配置文件的状态](#unit配置文件的状态)   
+   - [区分启动顺序与依赖关系](#区分启动顺序与依赖关系)   
+
+<!-- /MDTOC -->
 # unit
 
 ## 单元的概念(12个类型)
@@ -203,6 +216,41 @@ $ systemctl list-unit-files
 
 ![20200130_213038_70](image/20200130_213038_70.png)
 
+## 区分启动顺序与依赖关系
+
+Unit区块的Description字段给出当前服务的简单描述，Documentation字段给出文档位置。
+
+接下来的设置是启动顺序和依赖关系，这个比较重要。
+
+* After字段：表示如果network.target或sshd-keygen.service需要启动，那么sshd.service应该在它们之后启动。
+
+相应地，还有一个Before字段，定义sshd.service应该在哪些服务之前启动。
+
+注意，**After和Before字段只涉及启动顺序，不涉及依赖关系。**
+
+举例来说，某 Web 应用需要 postgresql 数据库储存数据。在配置文件中，它只定义要在 postgresql 之后启动，而没有定义依赖 postgresql 。上线后，由于某种原因，postgresql 需要重新启动，在停止服务期间，该 Web 应用就会无法建立数据库连接。
+
+设置依赖关系，需要使用Wants字段和Requires字段。
+
+* Wants字段：表示sshd.service与sshd-keygen.service之间存在"**弱依赖**"关系，即如果"sshd-keygen.service"启动失败或停止运行，不影响sshd.service继续执行。
+* Requires字段则表示"**强依赖**"关系，即如果该服务启动失败或异常退出，那么sshd.service也必须退出。
+
+注意，Wants字段与Requires字段只涉及依赖关系，与启动顺序无关，默认情况下是同时启动的。
+
+
+怎么感觉英语单词里这两个意思刚好相反？？？
+
+```
+want : 侧重缺少某种必需之物，或个人渴望得到的东西。
+require : 使用广泛，语气较轻。强调急需时可与need换用，但有时暗示所需的人或物是完成某一任务必不可少的。
+```
+
+```
+want 用户主动需求（用户希望，但要求反馈的意愿没那么强）
+need 用户潜在需求（根据分析判断出的"用户需要什么"）
+demand 用户主动强需求（用户强烈希望且要求得到反馈）
+requirement 用户请求（请求通常会按照一些预定的标准格式进行填写，且一般在提交请求后要求能够在限定时间内得到响应，如用户提交支付请求，系统需要响应用户，告知请求被许可或者不被许可
+```
 
 
 ---

@@ -1,0 +1,2 @@
+# systemd-detect-virt
+

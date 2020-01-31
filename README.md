@@ -33,6 +33,32 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [systemd概述](docs/systemd概述.md)
 * [systemd特点](docs/systemd特点.md)
 * [systemd架构](docs/systemd架构.md)
+* [systemd基本概念](docs/systemd基本概念.md)
+    * [unit](docs/systemd基本概念/unit.md)
+    * [target](docs/systemd基本概念/target.md)
+* [systemd相关命令](docs/systemd相关命令.md)
+    * [bootctl](docs/systemd相关命令/bootctl.md)
+    * [timedatectl](docs/systemd相关命令/timedatectl.md)
+    * [busctl](docs/systemd相关命令/busctl.md)
+    * [hostnamectl](docs/systemd相关命令/hostnamectl.md)
+    * [kernel-install](docs/systemd相关命令/kernel-install.md)
+    * [localectl](docs/systemd相关命令/localectl.md)
+    * [networkctl](docs/systemd相关命令/networkctl.md)
+    * [loginctl](docs/systemd相关命令/loginctl.md)
+    * [journalctl](docs/systemd相关命令/journalctl.md)
+    * [systemd-analyze](docs/systemd相关命令/systemd-analyze.md)
+    * [systemd-cat](docs/systemd相关命令/systemd-cat.md)
+    * [systemd-cgls](docs/systemd相关命令/systemd-cgls.md)
+    * [systemd-cgtop](docs/systemd相关命令/systemd-cgtop.md)
+    * [systemd-delta](docs/systemd相关命令/systemd-delta.md)
+    * [systemd-detect-virt](docs/systemd相关命令/systemd-detect-virt.md)
+    * [systemd-mount](docs/systemd相关命令/systemd-mount.md)
+    * [systemd-umount](docs/systemd相关命令/systemd-umount.md)
+    * [systemd-path](docs/systemd相关命令/systemd-path.md)
+    * [systemd-resolve](docs/systemd相关命令/systemd-resolve.md)
+    * [systemd-run](docs/systemd相关命令/systemd-run.md)
+    * [systemd-socket-activate](docs/systemd相关命令/systemd-socket-activate.md)
+    * [systemd-stdio-bridge](docs/systemd相关命令/systemd-stdio-bridge.md)
 
 
 ## 参考
@@ -42,6 +68,11 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 
 ## 小结
+
+
+---
+
+![20200131_215534_65](image/20200131_215534_65.png)
 
 
 ---
