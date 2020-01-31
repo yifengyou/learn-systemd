@@ -36,6 +36,10 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [systemd基本概念](docs/systemd基本概念.md)
     * [unit](docs/systemd基本概念/unit.md)
     * [target](docs/systemd基本概念/target.md)
+* [配置文件](docs/配置文件.md)
+    * [Unit区块](docs/配置文件/Unit区块.md)
+    * [Install区块](docs/配置文件/Install区块.md)
+    * [Service区块](docs/配置文件/Service区块.md)
 * [systemd相关命令](docs/systemd相关命令.md)
     * [bootctl](docs/systemd相关命令/bootctl.md)
     * [timedatectl](docs/systemd相关命令/timedatectl.md)
@@ -71,6 +75,14 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 
 ---
+
+## systemd作者
+
+![20200131_220703_13](image/20200131_220703_13.png)
+
+* <https://en.wikipedia.org/wiki/Lennart_Poettering>
+
+## 架构图
 
 ![20200131_215534_65](image/20200131_215534_65.png)
 
