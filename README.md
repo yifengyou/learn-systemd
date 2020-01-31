@@ -2,7 +2,8 @@
 
 ```
 Systemctl是一个systemd工具，主要负责控制systemd系统和服务管理器。
-Systemd是一个系统管理守护进程、工具和库的集合，用于取代System V初始进程。Systemd的功能是用于集中管理和配置类UNIX系统。
+Systemd是一个系统管理守护进程、工具和库的集合，用于取代System V初始进程。
+Systemd的功能是用于集中管理和配置类UNIX系统。
 ```
 
 ![20200128_160617_66](image/20200128_160617_66.png)
@@ -36,6 +37,11 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * [systemd基本概念](docs/systemd基本概念.md)
     * [unit](docs/systemd基本概念/unit.md)
     * [target](docs/systemd基本概念/target.md)
+    * [Systemd事务](docs/systemd基本概念/Systemd事务.md)
+* [systemd基本原理](docs/systemd基本原理.md)
+    * [解决 socket 依赖](docs/systemd基本原理/解决socket依赖.md)
+    * [解决 D-Bus 依赖](docs/systemd基本原理/解决D-Bus依赖.md)
+    * [解决文件系统依赖](docs/systemd基本原理/解决文件系统依赖.md)
 * [配置文件](docs/配置文件.md)
     * [Unit区块](docs/配置文件/Unit区块.md)
     * [Install区块](docs/配置文件/Install区块.md)
@@ -68,6 +74,9 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 ## 参考
 
 * <https://blog.csdn.net/weixin_30894389/article/details/95682927>
+* <http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html>
+* <http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html>
+* <https://www.ibm.com/developerworks/cn/linux/1407_liuming_init3/index.html>
 
 
 
