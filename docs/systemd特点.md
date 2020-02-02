@@ -1,5 +1,18 @@
 # systemd特点
 
+与System V风格init相比，systemd采用了以下新技术：
+
+1. 将service（服务）、target（运行模式，类似于运行等级）、mount、timer、snapshot、path、socket、swap等称为Unit。比如，一个auditd服务（就是auditd.service）就是一个Unit，一个multi-user.target运行模式也是一个Unit。
+2. 采用Socket激活式与D-Bus激活式服务，以提高相互依赖的各服务的并行运行性能；
+3. 用cgroups代替进程ID来追踪进程，以此即使是两次fork之后生成的守护进程也不会脱离systemd的控制。
+4. 用target代替System V的运行级别（Runlevel），比如，SystemD的graphical.target相当于System V的init 5，multi-user.target相当于System V的init 3。
+5. 内置新的journald 日志管理系统。
+6. 引入localectl、timedatectl等新命令，系统配置更方便。
+
+从设计构思上说，由于systemd使用了cgroup与fanotify等组件以实现其特性，所以只适用于Linux。有鉴于此，考虑到kFreeBSD分支的软件源无法纳入systemd，为与其他分支保持一致，Debian开发者尽力避免纳入systemd。但**Lennart Poettering本人对此并不在意，并称“Debian GNU/kFreeBSD不过是玩具系统”**。但Debain 8.0 Jessie开始以systemd取代sysvinit。
+
+
+
 Systemd 是 Linux 系统中最新的初始化系统（init），它主要的设计目标是克服 sysvinit 固有的缺点，提高系统的启动速度。
 
 **演变趋势： sysvinit -> upstart -> systemd**

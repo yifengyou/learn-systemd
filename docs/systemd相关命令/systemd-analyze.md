@@ -118,6 +118,13 @@ $ systemd-analyze critical-chain
 $ systemd-analyze critical-chain atd.service
 ```
 
-![20200131_212958_51](image/20200131_212958_51.png) 
+![20200131_212958_51](image/20200131_212958_51.png)
+
+
+
+## 参考
+
+* <http://www.jinbuguo.com/systemd/systemd-analyze.html>
+
 
 ---

@@ -1,6 +1,6 @@
 # systemd详解
 
-![20200128_160617_66](image/20200128_160617_66.png)
+![20200201_105831_82](image/20200201_105831_82.png)
 
 * systemctl是一个systemd工具，主要负责控制systemd系统和服务管理器
 * systemd是一个系统管理守护进程、工具和库的集合，用于取代System V初始进程
@@ -100,6 +100,7 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 * <http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html>
 * <http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html>
 * <https://www.ibm.com/developerworks/cn/linux/1407_liuming_init3/index.html>
+* <http://www.jinbuguo.com/systemd/systemd.index.html>
 
 
 
@@ -116,7 +117,8 @@ Bug report, questions and discussion are welcome, you can post an issue or pull 
 
 ## 架构图
 
-![20200131_215534_65](image/20200131_215534_65.png)
+![20200201_105810_74](image/20200201_105810_74.png)
 
+![20200201_105749_45](image/20200201_105749_45.png)
 
 ---

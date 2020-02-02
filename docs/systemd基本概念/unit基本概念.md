@@ -13,6 +13,23 @@
 <!-- /MDTOC -->
 # unit
 
+**systemd 可以管理所有系统资源。不同的资源统称为 Unit（单位）**。
+
+Unit 一共分成12种。
+
+1. Service unit：系统服务
+2. Target unit：多个 Unit 构成的一个组
+3. Device Unit：硬件设备
+4. Mount Unit：文件系统的挂载点
+5. Automount Unit：自动挂载点
+6. Path Unit：文件或路径
+7. Scope Unit：不是由 systemd 启动的外部进程
+8. Slice Unit：进程组
+9. Snapshot Unit：systemd 快照，可以切回某个快照
+10. Socket Unit：进程间通信的 socket
+11. Swap Unit：swap 文件
+12. Timer Unit：定时器
+
 ## 单元的概念(12个类型)
 
 * 启动过程中的每一步都被 systemd 抽象为一个配置单元，即 unit。
@@ -25,14 +42,14 @@
 | Service unit   | 系统服务。代表一个后台服务进程，比如 mysqld。这是最常用的一类。 |
 | Socket Unit | 进程间通信的 socket。此类配置单元封装系统和互联网中的一个 套接字 。当下，systemd 支持流式、数据报和连续包的 AF_INET、AF_INET6、AF_UNIX socket 。每一个套接字配置单元都有一个相应的服务配置单元 。相应的服务在第一个"连接"进入套接字时就会启动(例如 nscd.socket 在有新连接后便启动 nscd.service)。 |
 | Device Unit | 硬件设备。此类配置单元封装一个存在于 Linux 设备树中的设备。每一个使用 udev 规则标记的设备都将会在 systemd 中作为一个设备配置单元出现。|
-| Mount Unit | 文件系统的挂载点。此类配置单元封装文件系统结构层次中的一个挂载点。Systemd 将对这个挂载点进行监控和管理。比如可以在启动时自动将其挂载；可以在某些条件下自动卸载。Systemd 会将/etc/fstab 中的条目都转换为挂载点，并在开机时处理。|
+| Mount Unit | 文件系统的挂载点。此类配置单元封装文件系统结构层次中的一个挂载点。systemd 将对这个挂载点进行监控和管理。比如可以在启动时自动将其挂载；可以在某些条件下自动卸载。systemd 会将/etc/fstab 中的条目都转换为挂载点，并在开机时处理。|
 | Automount Unit | 自动挂载点。此类配置单元封装系统结构层次中的一个自挂载点。每一个自挂载配置单元对应一个挂载配置单元 ，当该自动挂载点被访问时，systemd 执行挂载点中定义的挂载行为。|
 | Swap Unit | swap 文件。和挂载配置单元类似，交换配置单元用来管理交换分区。用户可以用交换配置单元来定义系统中的交换分区，可以让这些交换分区在启动时被激活。|
 | Timer Unit | 定时器。用来定时触发用户定义的操作，这类配置单元取代了 atd、crond 等传统的定时服务。|
 | Target unit | 多个Unit构成的一个组。它们本身实际上并不做什么，只是引用其他配置单元而已。这样便可以对配置单元做一个统一的控制。这样就可以实现大家都已经非常熟悉的运行级别概念。比如想让系统进入图形化模式，需要运行许多服务和配置命令，这些操作都由一个个的配置单元表示，将所有这些配置单元组合为一个目标(target)，就表示需要将这些配置单元全部执行一遍以便进入目标所代表的系统运行状态。 (例如 multi-user.target 相当于在传统使用 SysV 的系统中运行级别 5) |
-| Snapshot Unit|Systemd 快照，可以切回某个快照 |
+| Snapshot Unit|systemd 快照，可以切回某个快照 |
 | Path Unit | 文件或路径|
-| Scope Unit| 不是由 Systemd 启动的外部进程,来自systemd总线接口的信息。通常用于管理外部系统进程。|
+| Scope Unit| 不是由 systemd 启动的外部进程,来自systemd总线接口的信息。通常用于管理外部系统进程。|
 | Slice Unit| 进程组,通过Linux控制组节点（cgroup）重新激活资源。|
 
 
@@ -194,11 +211,11 @@ $ systemctl list-dependencies --all nginx.service
 
 ## unit配置文件
 
-* 每个配置单元都有一个对应的配置文件，告诉 Systemd 怎么启动这个 Unit 。
-* Systemd 默认从目录/etc/systemd/system/读取配置文件。但是，里面存放的大部分文件都是符号链接，(开机启动的部分)
+* 每个配置单元都有一个对应的配置文件，告诉 systemd 怎么启动这个 Unit 。
+* systemd 默认从目录/etc/systemd/system/读取配置文件。但是，里面存放的大部分文件都是符号链接，(开机启动的部分)
 * 指向目录/usr/lib/systemd/system/，真正的配置文件存放在那个目录。
 * systemctl enable命令用于在上面两个目录之间，建立符号链接关系。disable则是相反，删除符号链接，撤销开机启动。
-* 配置文件的后缀名，就是该 Unit 的种类，比如sshd.socket。如果省略，Systemd 默认后缀名为.service，所以sshd会被理解成sshd.service。
+* 配置文件的后缀名，就是该 Unit 的种类，比如sshd.socket。如果省略，systemd 默认后缀名为.service，所以sshd会被理解成sshd.service。
 
 ```
 /etc/systemd/system
